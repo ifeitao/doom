@@ -74,3 +74,34 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(setq system-time-locale "C")
+(setq doom-font (font-spec :family "霞鹜文楷等宽" :size 18
+))
+(setq org-plantuml-jar-path "/opt/homebrew/Cellar/plantuml/1.2023.10/libexec/plantuml.jar")
+(setq org-directory "~/crystal/")
+(use-package! rime
+  :after-call after-find-file pre-command-hook
+  :custom
+  (default-input-method "rime")
+  (rime-librime-root "~/app/librime/dist")
+  (rime-emacs-module-header-root "/opt/homebrew/include")
+  (rime-user-data-dir "~/.config/rime-ice")
+  (rime-show-candidate 'posframe))
+
+(use-package! org-roam
+  :custom
+  (org-roam-directory "~/crystal")
+  (org-roam-dailies-directory "journals/")
+  (org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+head "%<%Y-%m-%d>.org"
+                            "#+title: %<%Y-%m-%d>\n"))))
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?" :target
+      (file+head "pages/${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t))))
+
+(after! org
+  (super-save-mode +1))
