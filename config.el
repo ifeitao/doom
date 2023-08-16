@@ -105,3 +105,13 @@
 
 (after! org
   (super-save-mode +1))
+
+;; Org-habit
+(use-package! org-habit
+  :after org
+  :config
+  (setq org-habit-show-habits-only-for-today nil))
+
+(after! evil-org
+  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
+(add-hook 'auto-save-hook 'org-save-all-org-buffers)
