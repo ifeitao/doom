@@ -115,3 +115,8 @@
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
+
+(use-package! org-excalidraw
+  :config
+  (setq org-excalidraw-directory "~/crystal/excalidraw")
+  (org-excalidraw-initialize))
