@@ -50,6 +50,6 @@
 ;(unpin! t)
 (package! rime
   :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
-(package! org-excalidraw
-  :recipe (:host github :repo "wdavew/org-excalidraw"))
 (package! super-save)
+(package! org-excalidraw
+  :recipe (:local-repo "~/Workspace/org-excalidraw"))
