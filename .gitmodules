@@ -1,0 +1,3 @@
+[submodule "local-repo/org-excalidraw"]
+	path = local-repo/org-excalidraw
+	url = https://github.com/ifeitao/org-excalidraw

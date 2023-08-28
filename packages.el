@@ -52,4 +52,7 @@
   :recipe (:host github :repo "DogLooksGood/emacs-rime" :files ("*.el" "Makefile" "lib.c")))
 (package! super-save)
 (package! org-excalidraw
-  :recipe (:local-repo "~/Workspace/org-excalidraw"))
+  :recipe (:local-repo "./local-repo/org-excalidraw"))
+(package! org-modern)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

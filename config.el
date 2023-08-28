@@ -75,8 +75,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (setq system-time-locale "C")
-(setq doom-font (font-spec :family "霞鹜文楷等宽" :size 18
-))
+(setq doom-font (font-spec :family "Sarasa Term SC Nerd" :size 18))
+(setq doom-unicode-font doom-font)
 (setq org-plantuml-jar-path "/opt/homebrew/Cellar/plantuml/1.2023.10/libexec/plantuml.jar")
 (setq org-directory "~/crystal/")
 (use-package! rime
@@ -104,7 +104,9 @@
       :unnarrowed t))))
 
 (after! org
-  (super-save-mode +1))
+  (super-save-mode +1)
+  (setq org-image-actual-width 400)
+  (setq org-log-into-drawer t))
 
 ;; Org-habit
 (use-package! org-habit
@@ -120,3 +122,13 @@
   :config
   (setq org-excalidraw-directory "~/crystal/excalidraw")
   (org-excalidraw-initialize))
+(setq doom-themes-treemacs-theme "doom-colors")
+(global-org-modern-mode)
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
