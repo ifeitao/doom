@@ -77,6 +77,11 @@
 (setq system-time-locale "C")
 (setq doom-font (font-spec :family "Sarasa Term SC Nerd" :size 18))
 (setq doom-unicode-font doom-font)
+(defun init-cjk-fonts()
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font)
+      charset (font-spec :family "霞鹜文楷等宽" :size 18))))
+(add-hook 'doom-init-ui-hook 'init-cjk-fonts)
 (setq org-plantuml-jar-path "/opt/homebrew/Cellar/plantuml/1.2023.10/libexec/plantuml.jar")
 (setq org-directory "~/crystal/")
 (use-package! rime
